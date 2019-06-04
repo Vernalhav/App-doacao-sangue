@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">BloodBond</string>
+    <string name="blood_bond">Blood Bond</string>
+    <string name="nome">Nome</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="cadastro_usu_rio">Cadastro usuário</string>
+    <string name="usu_rio">Usuário</string>
+    <string name="institui_o">Instituição</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="example_email_com">example@email.com</string>
+    <string name="endere_o">Endereço</string>
 </resources>
