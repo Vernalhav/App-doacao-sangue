@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "129835541694",
+    "firebase_url": "https://app-doacao-sangue-4b514.firebaseio.com",
+    "project_id": "app-doacao-sangue-4b514",
+    "storage_bucket": "app-doacao-sangue-4b514.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129835541694:android:f9beb39e179744ee",
+        "android_client_info": {
+          "package_name": "com.example.bloodbond"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129835541694-fpbscl1tth55b11k3ec66pbske5cvcqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhqGbuN1QbdYG-CAhnvhUCL-Ju23cDAlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129835541694-fpbscl1tth55b11k3ec66pbske5cvcqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

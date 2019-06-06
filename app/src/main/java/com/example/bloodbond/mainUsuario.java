@@ -10,17 +10,17 @@ public class mainUsuario   extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_instituicao);
+        setContentView(R.layout.activity_main_usuario);
 
         abasCadastro adapter = new abasCadastro(getSupportFragmentManager());
         adapter.adicionar( new perfilUsuario() , "Perfil");
         adapter.adicionar( new historicoUsuario()  , "Historico");
-        adapter.adicionar( new doacoesUsuario()  , "Historico");
+        adapter.adicionar( new doacoesUsuario()  , "Doações");
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewer);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout3);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

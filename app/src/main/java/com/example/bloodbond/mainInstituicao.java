@@ -19,7 +19,7 @@ public class mainInstituicao  extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewer);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout2);
         tabLayout.setupWithViewPager(viewPager);
     }
 

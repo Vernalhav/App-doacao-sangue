@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Intent intent,perfil;
+
+    Intent intent, perfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DatabaseManager.Initialize(getApplicationContext());
 
         Button cadastro = (Button) findViewById(R.id.botaoCadastro);
 
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     void cadastro(){
         intent = new Intent(this, telaCadastro.class);
         startActivity(intent);
@@ -43,4 +48,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(perfil);
     }
     //TODO diferenciar instituicao e usuario na hora de entrar
+
 }
