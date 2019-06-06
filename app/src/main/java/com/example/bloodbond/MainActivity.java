@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
     void entrar(){
 
-        perfil = new Intent(this, perfilUsuario.class);
+        perfil = new Intent(this, mainUsuario.class);
         startActivity(perfil);
     }
     //TODO diferenciar instituicao e usuario na hora de entrar
