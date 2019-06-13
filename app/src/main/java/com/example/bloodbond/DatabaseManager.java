@@ -1,6 +1,7 @@
 package com.example.bloodbond;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DatabaseManager {
@@ -28,4 +29,19 @@ public class DatabaseManager {
             DatabaseManager.instance = new DatabaseManager(context);
     }
 
+    public boolean CreateUser(Pessoa newUser) {
+
+        String path = "Cadastros/" + newUser.getEmail().replaceAll("[^a-zA-Z0-9@]", "").trim();
+
+        DatabaseReference myRef = this.database.getReference(path);
+        myRef.setValue(newUser);
+
+        return true;
+    }
+/*
+    public boolean CreateInstituition(Intituicao newInstitution) {
+
+        return  true;
+    }
+*/
 }

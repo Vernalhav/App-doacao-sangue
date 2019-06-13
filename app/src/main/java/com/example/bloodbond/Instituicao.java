@@ -1,18 +1,16 @@
 package com.example.bloodbond;
 
-import java.io.Serializable;
-
-public class Instituicao implements Serializable {
+public class Instituicao extends Cadastro {
     private String nome, endereco;
 
-    private static final int Ap = 0;
-    private static final int An = 1;
-    private static final int Bp = 2;
-    private static final int Bn = 3;
-    private static final int ABp = 4;
-    private static final int ABn = 5;
-    private static final int Op = 6;
-    private static final int On = 7;
+    public static final int Ap = 0;
+    public static final int An = 1;
+    public static final int Bp = 2;
+    public static final int Bn = 3;
+    public static final int ABp = 4;
+    public static final int ABn = 5;
+    public static final int Op = 6;
+    public static final int On = 7;
 
     private double[] qrSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
     //  ex: qtSangue[ABp] = 1002.1 (mL)

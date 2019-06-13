@@ -1,9 +1,9 @@
 package com.example.bloodbond;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pessoa implements Serializable {
+public class Pessoa extends Cadastro {
+
     private String nome;
     private int tipoSanguineo, idade;    // "macros" de tipoSanguineo definidos em com.example.firebasetest.Instituicao.java
     private double peso, altura;
@@ -13,13 +13,16 @@ public class Pessoa implements Serializable {
 
     public Pessoa(){}
 
-    public Pessoa(String nome, int tipoSanguineo, double peso, double altura, int idade){
+    public Pessoa(String email, String nome, int tipoSanguineo, double peso, double altura, int idade){
+
+        super(0 , email);
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
         this.peso = peso;
         this.altura = altura;
         this.doacoesAgendadas = new ArrayList<>();
         this.doacoesPrevias = new ArrayList<>();
+
     }
 
     @Override
