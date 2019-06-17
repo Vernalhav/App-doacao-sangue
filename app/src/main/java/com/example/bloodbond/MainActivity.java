@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
     void entrar(){
 
+        // TEST: Usado para testar o login.
+        DatabaseManager.getInstance().GetRegistered("inst@inst.com", "admin");
+
         perfil = new Intent(this, mainUsuario.class);
         startActivity(perfil);
     }

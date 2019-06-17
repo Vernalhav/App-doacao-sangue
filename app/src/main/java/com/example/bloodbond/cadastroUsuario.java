@@ -24,10 +24,10 @@ public class cadastroUsuario extends Fragment {
             public void onClick(View v) {
 
                 // TODO: Criar uma instancia da classe pessoa com os dados do novo usuario.
-                 Pessoa pessoa = new Pessoa("test2@hotmal.com", "test2", 2, 65, 232, 22);
+                 Pessoa pessoa = new Pessoa("test2@hotmal.com", "2444666666", "test2", 2, 65, 232, 22);
 
                 // TODO: Descomentar função.
-                DatabaseManager.getInstance().RegisterUser(pessoa);
+                DatabaseManager.getInstance().Register(pessoa);
 
             }
         });

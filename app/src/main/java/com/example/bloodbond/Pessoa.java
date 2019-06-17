@@ -13,9 +13,9 @@ public class Pessoa extends Cadastro {
 
     public Pessoa(){}
 
-    public Pessoa(String email, String nome, int tipoSanguineo, double peso, double altura, int idade){
+    public Pessoa(String email, String password, String nome, int tipoSanguineo, double peso, double altura, int idade){
 
-        super(0 , email);
+        super(0, email, password);
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
         this.peso = peso;

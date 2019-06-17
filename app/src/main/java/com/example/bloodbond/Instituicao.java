@@ -1,5 +1,7 @@
 package com.example.bloodbond;
 
+import java.util.ArrayList;
+
 public class Instituicao extends Cadastro {
     private String nome, endereco;
 
@@ -12,10 +14,28 @@ public class Instituicao extends Cadastro {
     public static final int Op = 6;
     public static final int On = 7;
 
-    private double[] qrSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
+    private ArrayList<Double> qrSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
     //  ex: qtSangue[ABp] = 1002.1 (mL)
 
     public Instituicao() {}
+
+    public Instituicao(String email, String password, String nome, String endereco,
+                       double Ap, double An, double Bp, double Bn, double ABp, double ABn, double Op, double On){
+
+        super(1, email, password);
+
+        this.nome = nome;
+        this.endereco = endereco;
+
+        ArrayList<Double> qrSangue = new ArrayList<Double>();
+        qrSangue.add(Ap); qrSangue.add(An);
+        qrSangue.add(Bp); qrSangue.add(Bn);
+        qrSangue.add(ABp); qrSangue.add(ABn);
+        qrSangue.add(Op); qrSangue.add(On);
+
+        this.qrSangue = qrSangue;
+
+    }
 
     public String getNome() {
         return nome;
@@ -65,11 +85,11 @@ public class Instituicao extends Cadastro {
         return On;
     }
 
-    public double[] getQrSangue() {
+    public ArrayList<Double> getQrSangue() {
         return qrSangue;
     }
 
-    public void setQrSangue(double[] qrSangue) {
+    public void setQrSangue(ArrayList<Double> qrSangue) {
         this.qrSangue = qrSangue;
     }
 }
