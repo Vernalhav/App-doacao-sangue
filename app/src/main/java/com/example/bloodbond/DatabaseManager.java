@@ -10,6 +10,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import javax.security.auth.login.LoginException;
+
+/**
+ * Intermediates the interaction between the app and the database.
+ */
 public class DatabaseManager {
 
     /**
@@ -64,13 +69,27 @@ public class DatabaseManager {
     private String EmailToKey(String email) { return email.replaceAll("[^a-zA-Z0-9@]", ""); }
 
     /**
+     * Registers a new user to the database.
+     * @param user Information for the new user to be registered.
+     */
+    public void RegisterUser (Pessoa user) { RegisterAccount(user); } // Wrapper function.
+
+    /**
+     * Registers a new institution to the database.
+     * @param institution Information for the new institution to be registered.
+     */
+    public void RegisterInstitution (Instituicao institution) { RegisterAccount(institution); } // Wrapper function.
+
+    /**
      * Tries to register a new user.
      * @param newRegister User to be registered.
      */
-    public void Register(final Cadastro newRegister) {
+    private void RegisterAccount(final Cadastro newRegister) {
 
         // Key to the user in Firebase.
-        String key = "Cadastros/" + EmailToKey(newRegister.getEmail());
+        String key = "Cadastros/" + EmailToKey(newRegister.getEmail(
+
+        ));
 
         // Gets a reference to the key.
         final DatabaseReference myRef = this.database.getReference(key);
@@ -102,7 +121,12 @@ public class DatabaseManager {
         });
     }
 
-    public void GetRegistered(final String email, final String password) {
+    /**
+     * Attempts to login as an account.
+     * @param email Email to login.
+     * @param password Password to use (PLEASE ENSURE THIS IS ALREADY HASHED).
+     */
+    public void LoginAsAccount(final String email, final String password) {
 
         // Key to the user in Firebase.
         String key = "Cadastros/" + EmailToKey(email);
@@ -119,26 +143,36 @@ public class DatabaseManager {
                 // If the key does not exist registers the user.
                 if(dataSnapshot.exists()) {
 
-                    Cadastro reg;
-
                     try {
 
-                        Pessoa pessoa = dataSnapshot.getValue(Pessoa.class);
-                        reg = pessoa;
+                        // Reads the received data to the correct format.
+                        Cadastro reg;
+                        try {
+
+                            Pessoa pessoa = dataSnapshot.getValue(Pessoa.class);
+                            reg = pessoa;
+
+                        } catch (Exception e) {
+
+                            Instituicao instituicao = dataSnapshot.getValue(Instituicao.class);
+                            reg = instituicao;
+
+                        }
+
+                        // Verifies if the password is correct.
+                        if (reg.getPassword().equals(password)) {
+                            Log.d("login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
+                        } else
+                            Log.d("wrong_password", EmailToKey(email) + " wrong password!");
 
                     } catch (Exception e) {
 
-                        Instituicao instituicao = dataSnapshot.getValue(Instituicao.class);
-                        reg = instituicao;
+                        Log.e("login_exception", "Logging excepion!", e);
 
                     }
 
-                    if(reg.getPassword().equals(password)) {
-                        Log.d("Reg_login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
-                    } else
-                        Log.d("Reg_wrong_password", EmailToKey(email) + " wrong password!");
                 } else { // If it does gives out an error.
-                    Log.d("Reg_doesnt_exists", "Account does not exist!");
+                    Log.d("doesnt_exists", "Account does not exist!");
                     // crash: Toast.makeText(MainActivity.getInstance(), "Esse email já está cadastrado!", Toast.LENGTH_LONG).show();
                 }
 
@@ -153,11 +187,4 @@ public class DatabaseManager {
             }
         });
     }
-
-/*
-    public boolean CreateInstituition(Intituicao newInstitution) {
-
-        return  true;
-    }
-*/
 }

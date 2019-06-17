@@ -27,7 +27,7 @@ public class cadastroUsuario extends Fragment {
                  Pessoa pessoa = new Pessoa("test2@hotmal.com", "2444666666", "test2", 2, 65, 232, 22);
 
                 // TODO: Descomentar função.
-                DatabaseManager.getInstance().Register(pessoa);
+                DatabaseManager.getInstance().RegisterUser(pessoa);
 
             }
         });

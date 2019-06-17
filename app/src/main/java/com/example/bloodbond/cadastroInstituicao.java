@@ -29,7 +29,7 @@ public class cadastroInstituicao extends Fragment {
                 Instituicao instituicao = new Instituicao("inst@inst.com", "admin", "Instituição A", "Lugar nenhum", 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8);
 
                 // TODO: Descomentar função.
-                DatabaseManager.getInstance().Register(instituicao);
+                DatabaseManager.getInstance().RegisterInstitution(instituicao);
 
             }
         });
