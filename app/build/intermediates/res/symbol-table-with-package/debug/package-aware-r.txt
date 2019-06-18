@@ -1140,8 +1140,6 @@ id editText
 id editText2
 id editText3
 id editText4
-id editText6
-id editText7
 id edit_query
 id end
 id end_padder
@@ -1169,6 +1167,8 @@ id icon_only
 id ifRoom
 id image
 id info
+id inputEmail
+id inputPassword
 id invisible
 id italic
 id item_touch_helper_previous_elevation

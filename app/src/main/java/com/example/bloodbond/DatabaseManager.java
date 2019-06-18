@@ -28,17 +28,23 @@ public class DatabaseManager {
     private FirebaseDatabase database;
 
     /**
+     * Reference to the apps main activity.
+     */
+    private MainActivity mainActivity;
+
+    /**
      * Current event listener being used for database.
      */
     private ValueEventListener databaseListener;
 
     /**
      * Constructor for the class.
-     * @param context The application context to be used.
+     * @param mainActivity The main App activity.
      */
-    private DatabaseManager(android.content.Context context) {
+    private DatabaseManager(MainActivity mainActivity) {
 
-        FirebaseApp.initializeApp(context);
+        FirebaseApp.initializeApp(mainActivity.getApplicationContext());
+        this.mainActivity = mainActivity;
         this.database = FirebaseDatabase.getInstance();
 
     }
@@ -53,12 +59,12 @@ public class DatabaseManager {
 
     /**
      * Initializes the database manager.
-     * @param context The application context to be used.
+     * @param mainActivity The main App activity.
      */
-    static void Initialize(android.content.Context context) {
+    static void Initialize(MainActivity mainActivity) {
 
         if(instance == null)
-            DatabaseManager.instance = new DatabaseManager(context);
+            DatabaseManager.instance = new DatabaseManager(mainActivity);
     }
 
     /**
@@ -87,9 +93,7 @@ public class DatabaseManager {
     private void RegisterAccount(final Cadastro newRegister) {
 
         // Key to the user in Firebase.
-        String key = "Cadastros/" + EmailToKey(newRegister.getEmail(
-
-        ));
+        String key = "Cadastros/" + EmailToKey(newRegister.getEmail());
 
         // Gets a reference to the key.
         final DatabaseReference myRef = this.database.getReference(key);
@@ -102,11 +106,17 @@ public class DatabaseManager {
 
                 // If the key does not exist registers the user.
                 if(!dataSnapshot.exists()) {
+
                     myRef.setValue(newRegister);
+                    mainActivity.GoToProfile(newRegister);
+                    Toast.makeText(mainActivity.getApplicationContext(), "Cadastro efetuado com sucesso!", Toast.LENGTH_LONG).show();
                     Log.d("User_add", EmailToKey(newRegister.getEmail()) + " to database!");
+
                 } else { // If it does gives out an error.
+
                     Log.d("User_exists", "User already exists!");
-                    // crash: Toast.makeText(MainActivity.getInstance(), "Esse email já está cadastrado!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email já está cadastrado!", Toast.LENGTH_LONG).show();
+
                 }
 
                 // Removes the listener.
@@ -162,8 +172,14 @@ public class DatabaseManager {
                         // Verifies if the password is correct.
                         if (reg.getPassword().equals(password)) {
                             Log.d("login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
-                        } else
+                            Toast.makeText(mainActivity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_LONG).show();
+
+                            mainActivity.GoToProfile(reg);
+
+                        } else {
                             Log.d("wrong_password", EmailToKey(email) + " wrong password!");
+                            Toast.makeText(mainActivity.getApplicationContext(), "Senha incorreta!", Toast.LENGTH_LONG).show();
+                        }
 
                     } catch (Exception e) {
 
@@ -172,8 +188,8 @@ public class DatabaseManager {
                     }
 
                 } else { // If it does gives out an error.
+                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email não está cadastrado!", Toast.LENGTH_LONG).show();
                     Log.d("doesnt_exists", "Account does not exist!");
-                    // crash: Toast.makeText(MainActivity.getInstance(), "Esse email já está cadastrado!", Toast.LENGTH_LONG).show();
                 }
 
                 // Removes the listener.
