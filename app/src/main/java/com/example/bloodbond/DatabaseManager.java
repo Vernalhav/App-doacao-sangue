@@ -10,7 +10,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import javax.security.auth.login.LoginException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Intermediates the interaction between the app and the database.
@@ -136,7 +138,9 @@ public class DatabaseManager {
      * @param email Email to login.
      * @param password Password to use (PLEASE ENSURE THIS IS ALREADY HASHED).
      */
-    public void LoginAsAccount(final String email, final String password) {
+    public void LoginAsAccount(final String email, String password) {
+
+        final String passMd5 = getMd5(password);
 
         // Key to the user in Firebase.
         String key = "Cadastros/" + EmailToKey(email);
@@ -170,7 +174,7 @@ public class DatabaseManager {
                         }
 
                         // Verifies if the password is correct.
-                        if (reg.getPassword().equals(password)) {
+                        if (reg.getPassword().equals(passMd5)) {
                             Log.d("login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
                             Toast.makeText(mainActivity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_LONG).show();
 
@@ -184,6 +188,7 @@ public class DatabaseManager {
                     } catch (Exception e) {
 
                         Log.e("login_exception", "Logging excepion!", e);
+                        Toast.makeText(mainActivity.getApplicationContext(), "Erro no login!", Toast.LENGTH_LONG).show();
 
                     }
 
@@ -202,5 +207,35 @@ public class DatabaseManager {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
+    }
+
+    public static String getMd5(String input)
+    {
+        try {
+
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+
+            return null;
+
+        }
     }
 }

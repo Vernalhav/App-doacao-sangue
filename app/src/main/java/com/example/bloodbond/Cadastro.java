@@ -15,7 +15,7 @@ public abstract class Cadastro implements Serializable {
     public Cadastro(int registerType, String email, String password){
         this.registerType = registerType;
         this.email = email;
-        this.password = password;
+        this.password = DatabaseManager.getMd5(password);
     }
 
     public int getRegisterType() {

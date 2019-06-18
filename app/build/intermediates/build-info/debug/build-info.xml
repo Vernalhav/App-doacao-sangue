@@ -5,24 +5,24 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
-    ir-eligibility="METHOD_DELETED"
+    ir-eligibility="FIELD_TYPE_CHANGE"
     plugin-version="3.4.1"
-    timestamp="1560866867836"
+    timestamp="1560867899819"
     token="2813920812918678808"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="191" />
+        duration="323" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="27" />
+        duration="31" />
     <task
         name="verifier"
-        duration="7" />
+        duration="14" />
 
     <artifact
         location="C:\Users\luise\AndroidStudioProjects\App-doacao-sangue\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -104,8 +104,8 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1560866867836"
+        ir-eligibility="FIELD_TYPE_CHANGE"
+        timestamp="1560867899819"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\luise\AndroidStudioProjects\App-doacao-sangue\app\build\intermediates\split-apk\debug\slices\slice_2.apk"

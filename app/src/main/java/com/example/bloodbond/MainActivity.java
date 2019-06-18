@@ -54,11 +54,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Attempts to login to the account who's email and password have been passed on the EditTexts.
      */
-    private void Login() {
-
-        DatabaseManager.getInstance().LoginAsAccount(emailTV.getText().toString(), passwordTv.getText().toString());
-
-    }
+    private void Login() { DatabaseManager.getInstance().LoginAsAccount(emailTV.getText().toString(), passwordTv.getText().toString()); }
 
     //TODO diferenciar instituicao e usuario na hora de entrar (Na função GoToProfile é só pegar profile.registerType, se for 0
     // é um Usuário, se for 1 é uma Instituição ~Cabral)
