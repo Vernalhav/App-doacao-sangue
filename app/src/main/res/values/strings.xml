@@ -10,4 +10,16 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="example_email_com">example@email.com</string>
     <string name="endere_o">Endereço</string>
+
+    <string-array name="blood_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
 </resources>
