@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 
 public class mainUsuario   extends AppCompatActivity {
 
+    private Pessoa user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_usuario);
 
@@ -22,5 +25,9 @@ public class mainUsuario   extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout3);
         tabLayout.setupWithViewPager(viewPager);
+
+        Bundle extra = getIntent().getExtras();
+        user = (Pessoa) extra.getSerializable("login");
+
     }
 }

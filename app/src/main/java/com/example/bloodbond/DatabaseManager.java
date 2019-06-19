@@ -209,6 +209,11 @@ public class DatabaseManager {
         });
     }
 
+    /**
+     * Provides an MD5 to be used for the account password.
+     * @param input String to be hashed.
+     * @return MD5 hash of the String.
+     */
     public static String getMd5(String input)
     {
         try {

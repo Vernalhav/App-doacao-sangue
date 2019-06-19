@@ -2,21 +2,49 @@ package com.example.bloodbond;
 
 import java.util.ArrayList;
 
+/**
+ * Class that represents a regular user.
+ */
 public class Pessoa extends Cadastro {
 
-    private String nome;
-    private int tipoSanguineo, idade;    // "macros" de tipoSanguineo definidos em com.example.firebasetest.Instituicao.java
-    private double peso, altura;
+    /**
+     * Blood type of the user. Uses macros from com.example.firebasetest.Instituicao.java.
+     */
+    private int tipoSanguineo;
+    /**
+     * Age of the user.
+     */
+    private int idade;
+    /**
+     * Weight of the user (kg).
+     */
+    private double peso;
+    /**
+     * Height of the user (cm).
+     */
+    private double altura;
 
     private ArrayList<Doacao> doacoesAgendadas;
     private ArrayList<Doacao> doacoesPrevias;
 
+    /**
+     * Empty constructor.
+     */
     public Pessoa(){}
 
+    /**
+     * Class constructor.
+     * @param email Email used to register the institution.
+     * @param password Password of the institution, passed as plain-text will be stored as MD5.
+     * @param nome Name of the institution.
+     * @param tipoSanguineo Blood type of the user.
+     * @param peso Weight of the user (kg).
+     * @param altura Height of the user (cm).
+     * @param idade Age of the user.
+     */
     public Pessoa(String email, String password, String nome, int tipoSanguineo, double peso, double altura, int idade){
 
-        super(0, email, password);
-        this.nome = nome;
+        super(0, email, password, nome);
         this.tipoSanguineo = tipoSanguineo;
         this.peso = peso;
         this.altura = altura;
@@ -28,16 +56,8 @@ public class Pessoa extends Cadastro {
     @Override
     public String toString() {
 
-        return  "Pessoa: " + "nome: " + this.nome + " " + this.doacoesAgendadas.toString();
+        return  "Pessoa: " + "nome: " + this.getName() + " " + this.doacoesAgendadas.toString();
 
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getTipoSanguineo() {
@@ -87,4 +107,19 @@ public class Pessoa extends Cadastro {
     public void setDoacoesPrevias(ArrayList<Doacao> doacoesPrevias) {
         this.doacoesPrevias = doacoesPrevias;
     }
+
+    public void BookDonation(Doacao doacao) {
+
+        doacoesAgendadas.add(doacao);
+        // TODO: update on database.
+
+    }
+
+    public void AddPreviousDonation(Doacao doacao) {
+
+        doacoesPrevias.add(doacao);
+        // TODO: update on database.
+
+    }
+
 }

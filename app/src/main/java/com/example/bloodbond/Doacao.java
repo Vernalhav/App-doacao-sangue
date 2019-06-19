@@ -2,14 +2,32 @@ package com.example.bloodbond;
 
 import java.io.Serializable;
 
+/**
+ * Class that represents a blood donation.
+ */
 public class Doacao implements Serializable {
 
-    private double qtDoacao;    // em mL
+    /**
+     * Amount of blood from the donation (mL)
+     */
+    private double qtDoacao;
+    /**
+     * Destination of the donation.
+     */
     private Instituicao instDestino;
-    private int tipoSanguineo;  // "macros" definidos em com.example.firebasetest.Instituicao.java
+    /**
+     * Blood type, macros defined in com.example.firebasetest.Instituicao.java
+     */
+    private int tipoSanguineo;
 
-    public Doacao(){}
+    public Doacao() {}
 
+    /**
+     * Class constructor.
+     * @param qtDoacao Amount of blood donated.
+     * @param tipoSanguineo Blood type.
+     * @param inst Target institution.
+     */
     public Doacao(double qtDoacao, int tipoSanguineo, Instituicao inst) {
         this.qtDoacao = qtDoacao;
         this.instDestino = inst;
