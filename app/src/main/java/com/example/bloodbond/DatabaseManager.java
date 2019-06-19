@@ -74,7 +74,7 @@ public class DatabaseManager {
      * @param email Email to be converted.
      * @return Generated key.
      */
-    private String EmailToKey(String email) { return email.replaceAll("[^a-zA-Z0-9@]", ""); }
+    public static String EmailToKey(String email) { return email.replaceAll("[^a-zA-Z0-9@]", ""); }
 
     /**
      * Registers a new user to the database.
@@ -136,11 +136,16 @@ public class DatabaseManager {
     /**
      * Attempts to login as an account.
      * @param email Email to login.
-     * @param password Password to use (PLEASE ENSURE THIS IS ALREADY HASHED).
+     * @param password Password to use.
      */
     public void LoginAsAccount(final String email, String password) {
 
         final String passMd5 = getMd5(password);
+
+        if(passMd5 == null) {
+            Toast.makeText(mainActivity.getApplicationContext(), "Erro de hashing!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         // Key to the user in Firebase.
         String key = "Cadastros/" + EmailToKey(email);
@@ -192,9 +197,9 @@ public class DatabaseManager {
 
                     }
 
-                } else { // If it does gives out an error.
-                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email não está cadastrado!", Toast.LENGTH_LONG).show();
+                } else { // If it does, gives out an error.
                     Log.d("doesnt_exists", "Account does not exist!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email não está cadastrado!", Toast.LENGTH_LONG).show();
                 }
 
                 // Removes the listener.
@@ -204,7 +209,8 @@ public class DatabaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.d("database_error", "Database error!");
+                Toast.makeText(mainActivity.getApplicationContext(), "Erro na base de dados!", Toast.LENGTH_LONG).show();
             }
         });
     }
