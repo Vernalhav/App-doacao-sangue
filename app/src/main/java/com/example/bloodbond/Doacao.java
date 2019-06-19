@@ -1,6 +1,8 @@
 package com.example.bloodbond;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Class that represents a blood donation.
@@ -15,10 +17,13 @@ public class Doacao implements Serializable {
      * Destination of the donation.
      */
     private Instituicao instDestino;
+    
     /**
      * Blood type, macros defined in com.example.firebasetest.Instituicao.java
      */
     private int tipoSanguineo;
+    private Pessoa doador;
+    private Date data;
 
     public Doacao() {}
 
@@ -28,10 +33,29 @@ public class Doacao implements Serializable {
      * @param tipoSanguineo Blood type.
      * @param inst Target institution.
      */
-    public Doacao(double qtDoacao, int tipoSanguineo, Instituicao inst) {
+     public Doacao(double qtDoacao, int tipoSanguineo, Pessoa doador, Instituicao inst, Date data) {
+
         this.qtDoacao = qtDoacao;
+        this.doador = doador;
         this.instDestino = inst;
         this.tipoSanguineo = tipoSanguineo;
+        this.data = data;
+    }
+
+    public Pessoa getDoador() {
+        return doador;
+    }
+
+    public void setDoador(Pessoa doador) {
+        this.doador = doador;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public double getQtDoacao() {
@@ -56,5 +80,15 @@ public class Doacao implements Serializable {
 
     public void setTipoSanguineo(int tipoSanguineo) {
         this.tipoSanguineo = tipoSanguineo;
+    }
+
+    /**
+     * Funcao que determina se
+     * a doacao já foi realizada
+     * no tempo presente
+     * @return se a dooacao foi realizada
+     */
+    public boolean jaFoi(){
+        return data.compareTo(Calendar.getInstance().getTime()) <= 0;
     }
 }
