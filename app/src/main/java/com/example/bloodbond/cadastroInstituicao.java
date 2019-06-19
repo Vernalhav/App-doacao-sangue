@@ -30,10 +30,15 @@ public class cadastroInstituicao extends Fragment {
 
                 // TODO: Descomentar função.
                 DatabaseManager.getInstance().RegisterInstitution(instituicao);
+                 cadastroEstoque();
 
             }
         });
 
         return view;
+    }
+    void cadastroEstoque(){
+        intent = new Intent(this.getActivity(), EstoqueCadastroInstituicao.class);
+        startActivity(intent);
     }
 }
