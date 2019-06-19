@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Abstract class for basic account functionality.
  */
-public abstract class Cadastro implements Serializable {
+public class Cadastro implements Serializable {
 
     /**
      * Type of the account. 0 = Pessoa, 1 = Intituicao

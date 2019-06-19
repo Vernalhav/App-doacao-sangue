@@ -89,12 +89,12 @@ public class DatabaseManager {
     public void RegisterInstitution (Instituicao institution) { RegisterAccount(institution); } // Wrapper function.
 
     /**
-     * Tries to register a new user.
-     * @param newRegister User to be registered.
+     * Tries to register a new account.
+     * @param newRegister Account to be registered.
      */
     private void RegisterAccount(final Cadastro newRegister) {
 
-        // Key to the user in Firebase.
+        // Key to the account in Firebase.
         String key = "Cadastros/" + EmailToKey(newRegister.getEmail());
 
         // Gets a reference to the key.
@@ -118,6 +118,52 @@ public class DatabaseManager {
 
                     Log.d("User_exists", "User already exists!");
                     Toast.makeText(mainActivity.getApplicationContext(), "Esse email já está cadastrado!", Toast.LENGTH_LONG).show();
+
+                }
+
+                // Removes the listener.
+                myRef.removeEventListener(databaseListener);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+    }
+
+    /**
+     * Updates an institution.
+     * @param register Intitution to be updated.
+     */
+    public void UpdateInstitution(final Instituicao register) {
+
+        Log.d("update", "Updating an account");
+
+        // Key to the account in Firebase.
+        String key = "Cadastros/" + EmailToKey(register.getEmail());
+
+        // Gets a reference to the key.
+        final DatabaseReference myRef = this.database.getReference("Cadastros").child(EmailToKey(register.getEmail())).child("qtSangue");
+
+        // Adds a listener to the key.
+        databaseListener = myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // If the key does not exist registers the user.
+                if(dataSnapshot.exists()) {
+
+                    myRef.setValue(register.getQtSangue());
+                    Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
+                    Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
+
+                } else { // If it does gives out an error.
+
+                    Log.d("Account_not_exists", "Account doesn't exit!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "Falha ao atualizar informações!", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -165,24 +211,20 @@ public class DatabaseManager {
                     try {
 
                         // Reads the received data to the correct format.
-                        Cadastro reg;
-                        try {
+                        Cadastro reg = dataSnapshot.getValue(Cadastro.class);
 
-                            Pessoa pessoa = dataSnapshot.getValue(Pessoa.class);
-                            reg = pessoa;
+                        if(reg.getRegisterType() == 0)
+                            reg = dataSnapshot.getValue(Pessoa.class);
+                        else
+                            reg = dataSnapshot.getValue(Instituicao.class);
 
-                        } catch (Exception e) {
-
-                            Instituicao instituicao = dataSnapshot.getValue(Instituicao.class);
-                            reg = instituicao;
-
-                        }
 
                         // Verifies if the password is correct.
                         if (reg.getPassword().equals(passMd5)) {
                             Log.d("login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
                             Toast.makeText(mainActivity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_LONG).show();
 
+                            myRef.removeEventListener(databaseListener);
                             mainActivity.GoToProfile(reg);
 
                         } else {

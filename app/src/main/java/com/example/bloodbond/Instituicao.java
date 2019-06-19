@@ -1,5 +1,8 @@
 package com.example.bloodbond;
 
+import android.os.Debug;
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -45,7 +48,7 @@ public class Instituicao extends Cadastro {
      */
     public static final int On = 7;
 
-    private ArrayList<Double> qrSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
+    private ArrayList<Double> qtSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
     //  ex: qtSangue[ABp] = 1002.1 (mL)
 
     /**
@@ -74,13 +77,13 @@ public class Instituicao extends Cadastro {
         super(1, email, password, nome);
         this.endereco = endereco;
 
-        ArrayList<Double> qrSangue = new ArrayList<Double>();
-        qrSangue.add(Ap); qrSangue.add(An);
-        qrSangue.add(Bp); qrSangue.add(Bn);
-        qrSangue.add(ABp); qrSangue.add(ABn);
-        qrSangue.add(Op); qrSangue.add(On);
+        ArrayList<Double> qtSangue = new ArrayList<Double>();
+        qtSangue.add(Ap); qtSangue.add(An);
+        qtSangue.add(Bp); qtSangue.add(Bn);
+        qtSangue.add(ABp); qtSangue.add(ABn);
+        qtSangue.add(Op); qtSangue.add(On);
 
-        this.qrSangue = qrSangue;
+        this.qtSangue = qtSangue;
 
     }
 
@@ -124,11 +127,23 @@ public class Instituicao extends Cadastro {
         return On;
     }
 
-    public ArrayList<Double> getQrSangue() {
-        return qrSangue;
+    public ArrayList<Double> getQtSangue() {
+        return qtSangue;
     }
 
-    public void setQrSangue(ArrayList<Double> qrSangue) {
-        this.qrSangue = qrSangue;
+    public void setQtSangue(ArrayList<Double> qtSangue) {
+        this.qtSangue = qtSangue;
     }
+
+    public void UpdateStock(int bloodType, double increment) {
+
+        double newQt = qtSangue.get(bloodType) + increment;
+        qtSangue.set(bloodType, newQt);
+
+        Log.d("qt", "qt: " + qtSangue.toString());
+
+        DatabaseManager.getInstance().UpdateInstitution(this);
+
+    }
+
 }
