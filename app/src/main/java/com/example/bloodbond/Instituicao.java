@@ -49,7 +49,7 @@ public class Instituicao extends Cadastro {
     public static final int On = 7;
 
     private ArrayList<Double> qtSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
-    //  ex: qtSangue[ABp] = 1002.1 (mL)
+    //  ex: qtSangue.get(ABp) = 1002.1 (mL)
 
     /**
      * Empty constructor.
@@ -143,7 +143,6 @@ public class Instituicao extends Cadastro {
         Log.d("qt", "qt: " + qtSangue.toString());
 
         DatabaseManager.getInstance().UpdateInstitution(this);
-
     }
 
     /**

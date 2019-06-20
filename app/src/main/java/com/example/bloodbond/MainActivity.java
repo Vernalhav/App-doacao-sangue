@@ -75,6 +75,5 @@ public class MainActivity extends AppCompatActivity {
 
         // Goes to the login window.
         startActivity(perfil);
-
     }
 }

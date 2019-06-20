@@ -1,5 +1,7 @@
 package com.example.bloodbond;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -101,5 +103,18 @@ public class Doacao implements Serializable {
      */
     public boolean jaFoi(){
         return data.compareTo(Calendar.getInstance().getTime()) <= 0;
+    }
+
+    /**
+     * Altera o horário da
+     * doação para os parametros
+     * especificados
+     * @param hora
+     * @param minuto
+     */
+    public void alteraHorario(int hora, int minuto){
+        Log.d("DEBUG", "alteraHorario: HORARIO ANTIGO " + data.getTime());
+        data.setTime( data.getTime() + 60000*minuto + 3600000*hora );
+        Log.d("DEBUG", "alteraHorario: HORARIO NOVO " + data.getTime());
     }
 }
