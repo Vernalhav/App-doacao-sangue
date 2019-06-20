@@ -14,10 +14,21 @@ public class Instituicao extends Cadastro {
     public static final int Op = 6;
     public static final int On = 7;
 
-    private ArrayList<Double> qrSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
+    private ArrayList<Double> qtSangue;  // array de 8 posicoes indexado pelos tipos sanguineos definidos acima
     //  ex: qtSangue[ABp] = 1002.1 (mL)
 
     public Instituicao() {}
+
+    public Instituicao(String email, String password, String nome, String endereco){
+        super(1, email, password);
+
+        this.nome = nome;
+        this.endereco = endereco;
+
+        ArrayList<Double> qtSangue = new ArrayList<Double>();
+
+        this.qtSangue = qtSangue;
+    }
 
     public Instituicao(String email, String password, String nome, String endereco,
                        double Ap, double An, double Bp, double Bn, double ABp, double ABn, double Op, double On){
@@ -33,8 +44,27 @@ public class Instituicao extends Cadastro {
         qrSangue.add(ABp); qrSangue.add(ABn);
         qrSangue.add(Op); qrSangue.add(On);
 
-        this.qrSangue = qrSangue;
+        this.qtSangue = qrSangue;
+    }
 
+    /**
+     * Inicializa o vetor de sangue
+     * com as quantidades passadas
+     * por parametro
+     * @param Ap
+     * @param An
+     * @param Bp
+     * @param Bn
+     * @param ABp
+     * @param ABn
+     * @param Op
+     * @param On
+     */
+    public void insereQtSangue(double Ap, double An, double Bp, double Bn, double ABp, double ABn, double Op, double On){
+        qtSangue.add(Ap); qtSangue.add(An);
+        qtSangue.add(Bp); qtSangue.add(Bn);
+        qtSangue.add(ABp); qtSangue.add(ABn);
+        qtSangue.add(Op); qtSangue.add(On);
     }
 
     public String getNome() {
@@ -85,11 +115,11 @@ public class Instituicao extends Cadastro {
         return On;
     }
 
-    public ArrayList<Double> getQrSangue() {
-        return qrSangue;
+    public ArrayList<Double> getQtSangue() {
+        return qtSangue;
     }
 
-    public void setQrSangue(ArrayList<Double> qrSangue) {
-        this.qrSangue = qrSangue;
+    public void setQtSangue(ArrayList<Double> qtSangue) {
+        this.qtSangue = qtSangue;
     }
 }

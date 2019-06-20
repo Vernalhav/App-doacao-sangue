@@ -1,4 +1,4 @@
-#Tue Jun 18 10:54:15 BRT 2019
-base.0=C\:\\Users\\luise\\AndroidStudioProjects\\App-doacao-sangue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
+#Wed Jun 19 22:33:13 BRT 2019
+base.0=C\:\\Users\\Victor Giovannoni\\Documents\\Codigo\\Java\\Android\\App-doacao-sangue\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
 path.0=classes.dex
 renamed.0=classes.dex

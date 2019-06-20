@@ -32,15 +32,14 @@ public class cadastroUsuario extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // TODO: Criar uma instancia da classe pessoa com os dados do novo usuario.
-                 Pessoa pessoa = new Pessoa(email.getText(), senha.getText(), nome.getText(), spinner.getSelectedItem().toString(), peso.getText(), altura.getText(), idade.getText());
+                int tipoSanguineo = determinaSangue(spinner.getSelectedItem().toString());
+                 Pessoa pessoa = new Pessoa(email.getText().toString(), senha.getText().toString(), nome.getText().toString(), tipoSanguineo,
+                         Double.parseDouble(peso.getText().toString()), Double.parseDouble(altura.getText().toString()), Integer.parseInt(idade.getText().toString()));
 
-                // TODO: Descomentar função.
                 DatabaseManager.getInstance().RegisterUser(pessoa);
 
             }
         });
-
 
         ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) ArrayAdapter.createFromResource(this.getContext(), R.array.blood_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -49,14 +48,19 @@ public class cadastroUsuario extends Fragment {
         return view;
     }
 
-    //@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
     }
 
-    //@Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
+    public int determinaSangue(String s){
+        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "0-"};
+        for (int i = 0; i < 8; i++){
+            if (s.equals(tipos[i])) return i;
+        }
+        return -1;
+    }
 }
