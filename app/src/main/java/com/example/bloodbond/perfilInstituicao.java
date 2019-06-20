@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 public class perfilInstituicao  extends Fragment {
 
+    private Instituicao inst;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mainInstituicao activity = (mainInstituicao)getActivity();
+        inst = activity.getInstituicao();
 
         View view = inflater.inflate(R.layout.activity_perfil_instituicao, container, false);
 
@@ -20,10 +25,11 @@ public class perfilInstituicao  extends Fragment {
 
         nome = (TextView) view.findViewById(R.id.nome);
         endereco = (TextView) view.findViewById(R.id.endereco);
-        necessidades = (TextView) view.findViewById(R.id.necessidades);
-        arrecadamento = (TextView) view.findViewById(R.id.arrecadamento);
+
+        nome.setText(inst.getName());
+        endereco.setText(inst.getEndereco());
 
         return view;
     }
     //TODO setar os textview com os dados das instiuicoes
-}
+ }
