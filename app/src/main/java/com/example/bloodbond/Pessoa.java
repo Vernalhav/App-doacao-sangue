@@ -1,12 +1,13 @@
 package com.example.bloodbond;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Class that represents a regular user.
  */
-public class Pessoa extends Cadastro {
+public class Pessoa extends Cadastro implements Serializable {
 
     /**
      * Blood type of the user. Uses macros from com.example.firebasetest.Instituicao.java.
@@ -51,6 +52,7 @@ public class Pessoa extends Cadastro {
         this.altura = altura;
         this.doacoesAgendadas = new ArrayList<>();
 
+        /**
         Doacao d1 = new Doacao(100,0,"a","insta", new Date(100000));
         Doacao d2 = new Doacao(150,0,"a","instb", new Date(200000));
         Doacao d3 = new Doacao(200,2,"b","instc", new Date(700000));
@@ -62,13 +64,14 @@ public class Pessoa extends Cadastro {
         doacoesAgendadas.add(d3);
         doacoesAgendadas.add(d4);
         doacoesAgendadas.add(d5);
+        */
 
         this.doacoesPrevias = new ArrayList<>();
 
     }
 
     public String getTipoSanguineoString(){
-        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "0-"};
+        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
         return tipos[tipoSanguineo];
     }
 
@@ -128,6 +131,7 @@ public class Pessoa extends Cadastro {
     }
 
     public void BookDonation(Doacao doacao) {
+        if (doacoesAgendadas == null) doacoesAgendadas = new ArrayList<>(); // Logando um usuario que nao fez doacoes
         doacoesAgendadas.add(doacao);
         DatabaseManager.getInstance().UpdateUser(this);
     }

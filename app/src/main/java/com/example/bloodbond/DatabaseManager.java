@@ -108,7 +108,7 @@ public class DatabaseManager {
 
                 // If the key does not exist registers the user.
                 if(!dataSnapshot.exists()) {
-
+                    Log.d("INSERINDO CADASTRO: ", "onDataChange: " + dataSnapshot + newRegister);
                     myRef.setValue(newRegister);
                     mainActivity.GoToProfile(newRegister);
                     Toast.makeText(mainActivity.getApplicationContext(), "Cadastro efetuado com sucesso!", Toast.LENGTH_LONG).show();
@@ -152,24 +152,12 @@ public class DatabaseManager {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                // If the key does not exist registers the user.
-                if(dataSnapshot.exists()) {
-
-                    myRef.setValue(register.getQtSangue());
-                    Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
-                    Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
-
-                } else { // If it does gives out an error.
-
-                    Log.d("Account_not_exists", "Account doesn't exit!");
-                    Toast.makeText(mainActivity.getApplicationContext(), "Falha ao atualizar informações!", Toast.LENGTH_LONG).show();
-
-                }
+                myRef.setValue(register.getQtSangue());
+                Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
+                Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
 
                 // Removes the listener.
                 myRef.removeEventListener(databaseListener);
-
             }
 
             @Override
@@ -199,19 +187,10 @@ public class DatabaseManager {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                // If the key does not exist registers the user.
-                if(dataSnapshot.exists()) {
+                myRef.setValue(register.getDoacoesAgendadas());
+                Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
+                Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
 
-                    myRef.setValue(register.getDoacoesAgendadas());
-                    Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
-                    Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
-
-                } else { // If it does gives out an error.
-
-                    Log.d("Account_not_exists", "Account doesn't exit!");
-                    Toast.makeText(mainActivity.getApplicationContext(), "Falha ao atualizar informações!", Toast.LENGTH_LONG).show();
-
-                }
 
                 // Removes the listener.
                 myRef.removeEventListener(databaseListener);

@@ -79,4 +79,7 @@ public class Cadastro implements Serializable {
 
     }
 
+    public void setRegisterType(int registerType) {
+        this.registerType = registerType;
+    }
 }

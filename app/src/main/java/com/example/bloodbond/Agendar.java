@@ -38,6 +38,15 @@ public class Agendar extends AppCompatActivity {
         horario = findViewById(R.id.horario);
         quantidade = findViewById(R.id.qtd);
 
+        final Calendar c = Calendar.getInstance();
+
+        calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                c.set(year, month, dayOfMonth);
+            }
+        });
+
         agendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +55,7 @@ public class Agendar extends AppCompatActivity {
 
                 doacao = new Doacao(
                         Double.parseDouble(quantidade.getText().toString()),
-                        On, emailDoador, emailInst, new Date(calendario.getDate())
+                        On, emailDoador, emailInst, new Date(c.getTimeInMillis())
                 );
                 doador.BookDonation(doacao);
 

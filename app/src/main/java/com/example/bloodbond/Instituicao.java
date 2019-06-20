@@ -3,12 +3,13 @@ package com.example.bloodbond;
 import android.os.Debug;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class that represents an institution.
  */
-public class Instituicao extends Cadastro {
+public class Instituicao extends Cadastro implements Serializable {
 
     /**
      * Adress of the institution.

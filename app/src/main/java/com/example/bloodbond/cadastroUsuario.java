@@ -57,7 +57,7 @@ public class cadastroUsuario extends Fragment {
     }
 
     public int determinaSangue(String s){
-        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "0-"};
+        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
         for (int i = 0; i < 8; i++){
             if (s.equals(tipos[i])) return i;
         }
