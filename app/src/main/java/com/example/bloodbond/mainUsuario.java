@@ -14,8 +14,8 @@ public class mainUsuario   extends AppCompatActivity {
 
         abasCadastro adapter = new abasCadastro(getSupportFragmentManager());
         adapter.adicionar( new perfilUsuario() , "Perfil");
-        adapter.adicionar( new historicoUsuario()  , "Historico");
-        adapter.adicionar( new doacoesUsuario()  , "Doações");
+        adapter.adicionar( new historicoUsuario()  , "Histórico");
+        adapter.adicionar( new doacoesUsuario()  , "Notificações");
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewer);
         viewPager.setAdapter(adapter);

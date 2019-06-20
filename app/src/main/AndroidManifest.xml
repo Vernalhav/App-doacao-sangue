@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".telaCadastro"></activity>
-        <activity android:name=".mainUsuario"></activity>
-        <activity android:name=".mainInstituicao"></activity>
-        <activity android:name=".EstoqueCadastroInstituicao"></activity>
+        <activity android:name=".Agendar"></activity>
+        <activity android:name=".telaCadastro" />
+        <activity android:name=".mainUsuario" />
+        <activity android:name=".mainInstituicao" />
+        <activity android:name=".EstoqueCadastroInstituicao" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

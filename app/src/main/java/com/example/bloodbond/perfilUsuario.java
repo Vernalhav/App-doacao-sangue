@@ -1,5 +1,6 @@
 package com.example.bloodbond;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,19 @@ public class perfilUsuario extends Fragment {
         TextView qtd = (TextView) view.findViewById(R.id. qtd);
         Button doar = (Button) view.findViewById(R.id.doar);
 
+        doar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    agendar();
+            }
+        });
+
         return view;
+    }
+
+    public void agendar(){
+        Intent intent = new Intent(this.getActivity(), Agendar.class);
+        startActivity(intent);
     }
     //TODO setar os textview com os dados dos usuarios
 }
