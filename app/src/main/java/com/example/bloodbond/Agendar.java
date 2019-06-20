@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +30,9 @@ public class Agendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agendar);
 
+        Bundle extra = getIntent().getExtras();
+        doador = (Pessoa) extra.getSerializable("usuario");
+
         calendario = findViewById(R.id.calendario);
         agendar = findViewById(R.id.buttonAgendar);
         horario = findViewById(R.id.horario);
@@ -44,8 +48,11 @@ public class Agendar extends AppCompatActivity {
                         Double.parseDouble(quantidade.getText().toString()),
                         On, emailDoador, emailInst, new Date(calendario.getDate())
                 );
+                doador.BookDonation(doacao);
 
                 Log.d("DOACAO CRIADA: ", "onClick: " + doacao.getData().toString());
+                System.out.println("DOACAO " + doacao.getData().toString());
+
             }
         });
 

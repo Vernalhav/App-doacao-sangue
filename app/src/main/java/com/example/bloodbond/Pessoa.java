@@ -128,10 +128,8 @@ public class Pessoa extends Cadastro {
     }
 
     public void BookDonation(Doacao doacao) {
-
         doacoesAgendadas.add(doacao);
-        // TODO: update on database.
-
+        DatabaseManager.getInstance().UpdateUser(this);
     }
 
     public void AddPreviousDonation(Doacao doacao) {

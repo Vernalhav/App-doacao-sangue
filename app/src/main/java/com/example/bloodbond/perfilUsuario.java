@@ -46,6 +46,7 @@ public class perfilUsuario extends Fragment {
 
     public void agendar(){
         Intent intent = new Intent(this.getActivity(), Agendar.class);
+        intent.putExtra("usuario", pes);
         startActivity(intent);
     }
     //TODO setar os textview com os dados dos usuarios

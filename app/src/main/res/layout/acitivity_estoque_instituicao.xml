@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/bpos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toEndOf="@+id/progressBarBpos"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/aneg" />
 
     <ProgressBar
         android:id="@+id/progressBarOneg"
@@ -275,7 +275,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tagOpos" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/apos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -290,7 +290,7 @@
         app:layout_constraintTop_toBottomOf="@+id/EstoqueTitle" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/aneg"
         android:layout_width="46dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
@@ -302,10 +302,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/progressBarAneg"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/apos" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/bneg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -318,10 +318,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toEndOf="@+id/progressBarBneg"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/bpos" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/abmais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -334,10 +334,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toEndOf="@+id/progressBarABpos"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/bneg" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/abmenos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -349,10 +349,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/progressBarABneg"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/abmais" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/omais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -365,10 +365,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toEndOf="@+id/progressBarOpos"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/abmenos" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/omenos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -381,7 +381,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toEndOf="@+id/progressBarOneg"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/omais" />
 
 
 </android.support.constraint.ConstraintLayout>

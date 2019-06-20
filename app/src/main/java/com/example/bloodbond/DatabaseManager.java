@@ -180,6 +180,53 @@ public class DatabaseManager {
     }
 
     /**
+     * Updates a user.
+     * @param register Intitution to be updated.
+     */
+    public void UpdateUser(final Pessoa register) {
+
+        Log.d("update", "Updating an account");
+
+        // Key to the account in Firebase.
+        String key = "Cadastros/" + EmailToKey(register.getEmail());
+
+        // Gets a reference to the key.
+        final DatabaseReference myRef = this.database.getReference("Cadastros").child(EmailToKey(register.getEmail())).child("doacoesAgendadas");
+
+        // Adds a listener to the key.
+        databaseListener = myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // If the key does not exist registers the user.
+                if(dataSnapshot.exists()) {
+
+                    myRef.setValue(register.getDoacoesAgendadas());
+                    Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
+                    Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
+
+                } else { // If it does gives out an error.
+
+                    Log.d("Account_not_exists", "Account doesn't exit!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "Falha ao atualizar informações!", Toast.LENGTH_LONG).show();
+
+                }
+
+                // Removes the listener.
+                myRef.removeEventListener(databaseListener);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+    }
+
+
+    /**
      * Attempts to login as an account.
      * @param email Email to login.
      * @param password Password to use.

@@ -21,7 +21,7 @@ public class perfilInstituicao  extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_perfil_instituicao, container, false);
 
-        TextView nome, endereco, necessidades, arrecadamento;
+        TextView nome, endereco;
 
         nome = (TextView) view.findViewById(R.id.nome);
         endereco = (TextView) view.findViewById(R.id.endereco);
