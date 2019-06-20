@@ -89,7 +89,6 @@ public class Instituicao extends Cadastro implements Serializable {
         qtSangue.add(Op); qtSangue.add(On);
 
         this.qtSangue = qtSangue;
-
     }
 
     public String getEndereco() {
@@ -169,7 +168,15 @@ public class Instituicao extends Cadastro implements Serializable {
         qtSangue.add(this.ABp, ABp); qtSangue.add(this.ABn, ABn);
         qtSangue.add(this.Op, Op); qtSangue.add(this.On, On);
     }
+    @Override
+    public String toString() {
+        String s;
+        s = "\n\t\t\t" + getName() + "\n";
+        s += "\t\t\t" + endereco + "\n";
+        s +="\t\t\t" + getEmail() + "\n";
 
+        return s;
+    }
 
 }
 

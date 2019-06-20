@@ -21,13 +21,15 @@ public class perfilInstituicao  extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_perfil_instituicao, container, false);
 
-        TextView nome, endereco;
+        TextView nome, endereco, email;
 
         nome = (TextView) view.findViewById(R.id.nome);
         endereco = (TextView) view.findViewById(R.id.endereco);
+        email = (TextView) view.findViewById(R.id.email);
 
         nome.setText(inst.getName());
-        endereco.setText(inst.getEndereco());
+        endereco.setText("Endereço: "+inst.getEndereco());
+        email.setText("Email: "+inst.getEmail());
 
         return view;
     }

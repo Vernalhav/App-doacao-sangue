@@ -62,6 +62,9 @@ public class Agendar extends AppCompatActivity {
                 Log.d("DOACAO CRIADA: ", "onClick: " + doacao.getData().toString());
                 System.out.println("DOACAO " + doacao.getData().toString());
 
+                //historicoUsuario frag = new historicoUsuario();
+                //frag.getAdapter().notifyDataSetChanged();
+
                 finish();
             }
         });

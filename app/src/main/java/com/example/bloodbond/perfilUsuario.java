@@ -27,7 +27,6 @@ public class perfilUsuario extends Fragment {
         TextView peso = (TextView) view.findViewById(R.id.peso);
         TextView altura = (TextView) view.findViewById(R.id.altura);
         TextView  tipo = (TextView) view.findViewById(R.id.tipo);
-        TextView qtd = (TextView) view.findViewById(R.id. qtd);
         Button doar = (Button) view.findViewById(R.id.doar);
 
         doar.setOnClickListener(new View.OnClickListener() {
@@ -38,9 +37,9 @@ public class perfilUsuario extends Fragment {
         });
 
         nome.setText(pes.getName());
-        peso.setText( Double.toString(pes.getPeso()));
-        altura.setText( Double.toString(pes.getAltura()));
-        tipo.setText(pes.getTipoSanguineoString());
+        peso.setText("Peso: " +Double.toString(pes.getPeso())+" kg");
+        altura.setText( "Altura: " + Double.toString(pes.getAltura()) + " m");
+        tipo.setText("Tipo Sanguíneo: "+pes.getTipoSanguineoString());
         return view;
     }
 

@@ -117,4 +117,14 @@ public class Doacao implements Serializable {
         data.setTime( data.getTime() + 60000*minuto + 3600000*hora );
         Log.d("DEBUG", "alteraHorario: HORARIO NOVO " + data.getTime());
     }
+    @Override
+    public String toString() {
+        String s;
+        s ="\n" + data + "\n";
+        s += "\nDoou ";
+        s += qtDoacao + "ml";
+        s += " para\n";
+        s += emailIdInst + "\n";
+        return s;
+    }
 }
