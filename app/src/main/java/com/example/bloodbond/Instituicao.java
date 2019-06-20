@@ -56,6 +56,10 @@ public class Instituicao extends Cadastro {
      */
     public Instituicao() {}
 
+    public double getQtSangue(int tipo){
+        return qtSangue.get(tipo);
+    }
+
     /**
      * Class constructor.
      * @param email Email used to register the institution.
@@ -159,11 +163,12 @@ public class Instituicao extends Cadastro {
      * @param On
      */
     public void insereQtSangue(double Ap, double An, double Bp, double Bn, double ABp, double ABn, double Op, double On){
-        qtSangue.add(Ap); qtSangue.add(An);
-        qtSangue.add(Bp); qtSangue.add(Bn);
-        qtSangue.add(ABp); qtSangue.add(ABn);
-        qtSangue.add(Op); qtSangue.add(On);
+        qtSangue.add(this.Ap, Ap); qtSangue.add(this.An, An);
+        qtSangue.add(this.Bp, Bp); qtSangue.add(this.Bn, Bn);
+        qtSangue.add(this.ABp, ABp); qtSangue.add(this.ABn, ABn);
+        qtSangue.add(this.Op, Op); qtSangue.add(this.On, On);
     }
+
 
 }
 
