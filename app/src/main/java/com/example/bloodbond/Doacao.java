@@ -4,30 +4,53 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Class that represents a blood donation.
+ */
 public class Doacao implements Serializable {
 
-    private double qtDoacao;    // em mL
-    private Instituicao instDestino;
-    private Pessoa doador;
-    private int tipoSanguineo;  // "macros" definidos em com.example.firebasetest.Instituicao.java
+    /**
+     * Amount of blood from the donation (mL)
+     */
+    private double qtDoacao;
+
+    /**
+     * Name of the donator.
+     */
+    private String emailIdInst;
+
+    /**
+     * Blood type, macros defined in com.example.firebasetest.Instituicao.java
+     */
+    private int tipoSanguineo;
+
+    /**
+     * Name of the donator.
+     */
+    private String emailIdDoador;
+
+    /**
+     * Date of the donation.
+     */
     private Date data;
 
-    public Doacao(){}
+    public Doacao() {}
 
-    public Doacao(double qtDoacao, int tipoSanguineo, Pessoa doador, Instituicao inst, Date data) {
+    /**
+     * Class constructor.
+     * @param qtDoacao Amount of blood donated.
+     * @param tipoSanguineo Blood type.
+     * @param emailDoador Name of the donator.
+     * @param emailInstituicao Target institution.
+     * @param data Date of the donation.
+     */
+    public Doacao(double qtDoacao, int tipoSanguineo, String emailDoador, String emailInstituicao, Date data) {
+
         this.qtDoacao = qtDoacao;
-        this.doador = doador;
-        this.instDestino = inst;
+        this.emailIdDoador = DatabaseManager.EmailToKey(emailDoador);
+        this.emailIdInst = DatabaseManager.EmailToKey(emailInstituicao);
         this.tipoSanguineo = tipoSanguineo;
         this.data = data;
-    }
-
-    public Pessoa getDoador() {
-        return doador;
-    }
-
-    public void setDoador(Pessoa doador) {
-        this.doador = doador;
     }
 
     public Date getData() {
@@ -46,12 +69,20 @@ public class Doacao implements Serializable {
         this.qtDoacao = qtDoacao;
     }
 
-    public Instituicao getInstDestino() {
-        return instDestino;
+    public String getEmailIdInst() {
+        return emailIdInst;
     }
 
-    public void setInstDestino(Instituicao instDestino) {
-        this.instDestino = instDestino;
+    public void setEmailIdInst(String emailIdInst) {
+        this.emailIdInst = emailIdInst;
+    }
+
+    public String getEmailIdDoador() {
+        return emailIdDoador;
+    }
+
+    public void setEmailIdDoador(String emailIdDoador) {
+        this.emailIdDoador = emailIdDoador;
     }
 
     public int getTipoSanguineo() {

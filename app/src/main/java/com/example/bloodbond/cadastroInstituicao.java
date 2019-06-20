@@ -36,7 +36,8 @@ public class cadastroInstituicao extends Fragment {
 //                Instituicao instituicao = new Instituicao("inst@inst.com", "admin", "Instituição A", "Lugar nenhum", 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8);
 
                 instituicao = new Instituicao(email.getText().toString(), senha.getText().toString(),
-                                            nome.getText().toString(), endereco.getText().toString());
+                                            nome.getText().toString(), endereco.getText().toString(),
+                                            0, 0, 0, 0, 0, 0, 0, 0);
                 cadastroEstoque();
             }
         });
