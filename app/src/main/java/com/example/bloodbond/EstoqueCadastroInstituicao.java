@@ -64,6 +64,7 @@ public class EstoqueCadastroInstituicao extends AppCompatActivity {
     public void vaiParaPerfil(){
         Intent intent = new Intent(EstoqueCadastroInstituicao.this, perfilInstituicao.class);
         intent.putExtra("login", instituicao);
+        DatabaseManager.getInstance().RegisterInstitution(instituicao);
         startActivity(intent);
     }
 }
