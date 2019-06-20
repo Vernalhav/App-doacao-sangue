@@ -13,8 +13,13 @@ import android.widget.TextView;
 
 public class perfilUsuario extends Fragment {
 
+    private Pessoa pes;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mainUsuario activity = (mainUsuario) getActivity();
+        pes = activity.getUsuario();
 
         View view = inflater.inflate(R.layout.activity_perfil_usuario, container, false);
 
@@ -32,6 +37,10 @@ public class perfilUsuario extends Fragment {
             }
         });
 
+        nome.setText(pes.getName());
+        peso.setText( Double.toString(pes.getPeso()));
+        altura.setText( Double.toString(pes.getAltura()));
+        tipo.setText(pes.getTipoSanguineoString());
         return view;
     }
 

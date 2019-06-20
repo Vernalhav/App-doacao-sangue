@@ -67,6 +67,11 @@ public class Pessoa extends Cadastro {
 
     }
 
+    public String getTipoSanguineoString(){
+        String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "0-"};
+        return tipos[tipoSanguineo];
+    }
+
     @Override
     public String toString() {
 
