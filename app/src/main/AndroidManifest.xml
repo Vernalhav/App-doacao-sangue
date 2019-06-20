@@ -12,6 +12,7 @@
         <activity android:name=".telaCadastro"></activity>
         <activity android:name=".mainUsuario"></activity>
         <activity android:name=".mainInstituicao"></activity>
+        <activity android:name=".EstoqueCadastroInstituicao"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

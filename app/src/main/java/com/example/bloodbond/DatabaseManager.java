@@ -10,7 +10,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import javax.security.auth.login.LoginException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Intermediates the interaction between the app and the database.
@@ -72,7 +74,7 @@ public class DatabaseManager {
      * @param email Email to be converted.
      * @return Generated key.
      */
-    private String EmailToKey(String email) { return email.replaceAll("[^a-zA-Z0-9@]", ""); }
+    public static String EmailToKey(String email) { return email.replaceAll("[^a-zA-Z0-9@]", ""); }
 
     /**
      * Registers a new user to the database.
@@ -87,12 +89,12 @@ public class DatabaseManager {
     public void RegisterInstitution (Instituicao institution) { RegisterAccount(institution); } // Wrapper function.
 
     /**
-     * Tries to register a new user.
-     * @param newRegister User to be registered.
+     * Tries to register a new account.
+     * @param newRegister Account to be registered.
      */
     private void RegisterAccount(final Cadastro newRegister) {
 
-        // Key to the user in Firebase.
+        // Key to the account in Firebase.
         String key = "Cadastros/" + EmailToKey(newRegister.getEmail());
 
         // Gets a reference to the key.
@@ -132,11 +134,64 @@ public class DatabaseManager {
     }
 
     /**
+     * Updates an institution.
+     * @param register Intitution to be updated.
+     */
+    public void UpdateInstitution(final Instituicao register) {
+
+        Log.d("update", "Updating an account");
+
+        // Key to the account in Firebase.
+        String key = "Cadastros/" + EmailToKey(register.getEmail());
+
+        // Gets a reference to the key.
+        final DatabaseReference myRef = this.database.getReference("Cadastros").child(EmailToKey(register.getEmail())).child("qtSangue");
+
+        // Adds a listener to the key.
+        databaseListener = myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // If the key does not exist registers the user.
+                if(dataSnapshot.exists()) {
+
+                    myRef.setValue(register.getQtSangue());
+                    Toast.makeText(mainActivity.getApplicationContext(), "Alterações salvas!", Toast.LENGTH_LONG).show();
+                    Log.d("Account_update", EmailToKey(register.getEmail()) + " updated!");
+
+                } else { // If it does gives out an error.
+
+                    Log.d("Account_not_exists", "Account doesn't exit!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "Falha ao atualizar informações!", Toast.LENGTH_LONG).show();
+
+                }
+
+                // Removes the listener.
+                myRef.removeEventListener(databaseListener);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+    }
+
+    /**
      * Attempts to login as an account.
      * @param email Email to login.
-     * @param password Password to use (PLEASE ENSURE THIS IS ALREADY HASHED).
+     * @param password Password to use.
      */
-    public void LoginAsAccount(final String email, final String password) {
+    public void LoginAsAccount(final String email, String password) {
+
+        final String passMd5 = getMd5(password);
+
+        if(passMd5 == null) {
+            Toast.makeText(mainActivity.getApplicationContext(), "Erro de hashing!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         // Key to the user in Firebase.
         String key = "Cadastros/" + EmailToKey(email);
@@ -156,24 +211,20 @@ public class DatabaseManager {
                     try {
 
                         // Reads the received data to the correct format.
-                        Cadastro reg;
-                        try {
+                        Cadastro reg = dataSnapshot.getValue(Cadastro.class);
 
-                            Pessoa pessoa = dataSnapshot.getValue(Pessoa.class);
-                            reg = pessoa;
+                        if(reg.getRegisterType() == 0)
+                            reg = dataSnapshot.getValue(Pessoa.class);
+                        else
+                            reg = dataSnapshot.getValue(Instituicao.class);
 
-                        } catch (Exception e) {
-
-                            Instituicao instituicao = dataSnapshot.getValue(Instituicao.class);
-                            reg = instituicao;
-
-                        }
 
                         // Verifies if the password is correct.
-                        if (reg.getPassword().equals(password)) {
+                        if (reg.getPassword().equals(passMd5)) {
                             Log.d("login_success", EmailToKey(email) + " logged in successfully! (" + reg.getRegisterType() + ")");
                             Toast.makeText(mainActivity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_LONG).show();
 
+                            myRef.removeEventListener(databaseListener);
                             mainActivity.GoToProfile(reg);
 
                         } else {
@@ -184,12 +235,13 @@ public class DatabaseManager {
                     } catch (Exception e) {
 
                         Log.e("login_exception", "Logging excepion!", e);
+                        Toast.makeText(mainActivity.getApplicationContext(), "Erro no login!", Toast.LENGTH_LONG).show();
 
                     }
 
-                } else { // If it does gives out an error.
-                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email não está cadastrado!", Toast.LENGTH_LONG).show();
+                } else { // If it does, gives out an error.
                     Log.d("doesnt_exists", "Account does not exist!");
+                    Toast.makeText(mainActivity.getApplicationContext(), "Esse email não está cadastrado!", Toast.LENGTH_LONG).show();
                 }
 
                 // Removes the listener.
@@ -199,8 +251,44 @@ public class DatabaseManager {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.d("database_error", "Database error!");
+                Toast.makeText(mainActivity.getApplicationContext(), "Erro na base de dados!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    /**
+     * Provides an MD5 to be used for the account password.
+     * @param input String to be hashed.
+     * @return MD5 hash of the String.
+     */
+    public static String getMd5(String input)
+    {
+        try {
+
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+
+            return null;
+
+        }
     }
 }

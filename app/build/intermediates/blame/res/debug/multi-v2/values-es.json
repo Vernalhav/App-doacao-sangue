@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Victor Giovannoni\\Documents\\Codigo\\Java\\Android\\App-doacao-sangue\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es\\values-es.xml",
+            "outputFile": "C:\\Users\\luise\\AndroidStudioProjects\\App-doacao-sangue\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es\\values-es.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\3e870995bb59520458cabd8bc51b105c\\res\\values-es\\values.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\a597426ab4538615111d874f1f6d01d7\\res\\values-es\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\8c5b7ec0e7ded76ba318e0621a99aa62\\res\\values-es\\values-es.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\01d695425201fcede984f2dbe82eb39d\\res\\values-es\\values-es.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\74b7cccb5a94531e098a2787f2672953\\res\\values-es\\values-es.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\b0a23f2077df86e7b14007ce18669702\\res\\values-es\\values-es.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\ee4ce96bb197e37a7e7023b0c2ebef0b\\res\\values-es\\values.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\49a5dea7f001ff90b50ab097f005f73c\\res\\values-es\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

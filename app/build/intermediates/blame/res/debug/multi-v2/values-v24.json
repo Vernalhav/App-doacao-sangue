@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Victor Giovannoni\\Documents\\Codigo\\Java\\Android\\App-doacao-sangue\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "C:\\Users\\luise\\AndroidStudioProjects\\App-doacao-sangue\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\74b7cccb5a94531e098a2787f2672953\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\b0a23f2077df86e7b14007ce18669702\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Victor Giovannoni\\.gradle\\caches\\transforms-2\\files-2.1\\448c8a0d08c64edd7e9cf30e100dcf62\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\luise\\.gradle\\caches\\transforms-2\\files-2.1\\47f933ce806773b66cbba12c2f13dd0e\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

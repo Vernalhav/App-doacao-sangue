@@ -41,7 +41,7 @@ public class EstoqueCadastroInstituicao extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 atualizaEstoque();
-                vaiParaPerfil();
+                cadastraInstituicao();
             }
         });
     }
@@ -61,10 +61,9 @@ public class EstoqueCadastroInstituicao extends AppCompatActivity {
                 Double.parseDouble(qtOp.getText().toString()), Double.parseDouble(qtOn.getText().toString()));
     }
 
-    public void vaiParaPerfil(){
-        Intent intent = new Intent(EstoqueCadastroInstituicao.this, perfilInstituicao.class);
-        intent.putExtra("login", instituicao);
+    public void cadastraInstituicao(){
+
         DatabaseManager.getInstance().RegisterInstitution(instituicao);
-        startActivity(intent);
+
     }
 }

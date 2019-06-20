@@ -25,6 +25,7 @@
         <activity android:name="com.example.bloodbond.telaCadastro" />
         <activity android:name="com.example.bloodbond.mainUsuario" />
         <activity android:name="com.example.bloodbond.mainInstituicao" />
+        <activity android:name="com.example.bloodbond.EstoqueCadastroInstituicao" />
         <activity android:name="com.example.bloodbond.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
