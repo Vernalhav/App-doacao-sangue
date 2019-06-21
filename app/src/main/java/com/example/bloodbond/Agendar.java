@@ -22,6 +22,7 @@ public class Agendar extends AppCompatActivity {
     Button agendar;
     EditText horario;
     EditText quantidade;
+    EditText emailDestino;
 
     Doacao doacao;
 
@@ -37,6 +38,7 @@ public class Agendar extends AppCompatActivity {
         agendar = findViewById(R.id.buttonAgendar);
         horario = findViewById(R.id.horario);
         quantidade = findViewById(R.id.qtd);
+        emailDestino = findViewById(R.id.emailInstDestino);
 
         final Calendar c = Calendar.getInstance();
 
@@ -50,20 +52,16 @@ public class Agendar extends AppCompatActivity {
         agendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailDoador = "testDonate@gmail.com";
-                String emailInst = "testInst@gmail.com";
 
                 doacao = new Doacao(
                         Double.parseDouble(quantidade.getText().toString()),
-                        On, emailDoador, emailInst, new Date(c.getTimeInMillis())
+                        On, doador.getEmail(), emailDestino.getText().toString(),
+                        new Date(c.getTimeInMillis())
                 );
                 doador.BookDonation(doacao);
 
                 Log.d("DOACAO CRIADA: ", "onClick: " + doacao.getData().toString());
                 System.out.println("DOACAO " + doacao.getData().toString());
-
-                //historicoUsuario frag = new historicoUsuario();
-                //frag.getAdapter().notifyDataSetChanged();
 
                 finish();
             }

@@ -45,7 +45,6 @@ public class cadastroInstituicao extends Fragment {
         return view;
     }
     void cadastroEstoque(){
-
         Intent intent = new Intent(this.getActivity(), EstoqueCadastroInstituicao.class);
         intent.putExtra("instituicao", instituicao);
         startActivity(intent);

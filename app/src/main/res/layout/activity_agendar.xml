@@ -29,78 +29,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleAgendar" />
 
-    <TextView
-        android:id="@+id/textHorario"
-        android:layout_width="68dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="40dp"
-        android:text="Horário"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendario" />
-
     <EditText
         android:id="@+id/horario"
-        android:layout_width="184dp"
+        android:layout_width="128dp"
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/textHorario"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
+        android:hint="Horário"
         android:inputType="time"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textHorario"
-        app:layout_constraintTop_toBottomOf="@+id/calendario" />
-
-    <TextView
-        android:id="@+id/textQtd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="40dp"
-        android:text="Quantidade"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/qtd"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHorario" />
+        app:layout_constraintTop_toBottomOf="@+id/calendario" />
 
     <EditText
         android:id="@+id/qtd"
-        android:layout_width="108dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="159dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
+        android:hint="Quantidade (mL)"
         android:inputType="number"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textQtd"
-        app:layout_constraintTop_toBottomOf="@+id/horario" />
-
-    <TextView
-        android:id="@+id/textml"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
-        android:text="ml"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/emailInstDestino"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintStart_toEndOf="@+id/qtd"
-        app:layout_constraintTop_toBottomOf="@+id/horario" />
+        app:layout_constraintStart_toEndOf="@+id/horario"
+        app:layout_constraintTop_toBottomOf="@+id/calendario"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonAgendar"
@@ -121,5 +84,24 @@
         app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qtd" />
+
+    <EditText
+        android:id="@+id/emailInstDestino"
+        android:layout_width="210dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="e-mail da instituição"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horario"
+        app:layout_constraintVertical_bias="0.13999999" />
 
 </android.support.constraint.ConstraintLayout>

@@ -39,7 +39,7 @@ public class historicoUsuario extends Fragment {
         adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, arr);
 
         listView.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
 
         return view;
     }
