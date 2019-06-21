@@ -32,7 +32,7 @@ public class historicoUsuario extends Fragment {
         TextView qtd = (TextView) view.findViewById(R.id. qtd);
         Button doar = (Button) view.findViewById(R.id.doar);
 
-        listView = (ListView)view.findViewById(R.id.list);
+        listView = (ListView)view.findViewById(R.id.listHist);
 
         ArrayList<Doacao> arr = pes.getDoacoesAgendadas();
         if (arr == null) return view;

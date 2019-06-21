@@ -1,6 +1,9 @@
 package com.example.bloodbond;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -10,9 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 /**
  * Intermediates the interaction between the app and the database.
@@ -194,7 +199,6 @@ public class DatabaseManager {
 
                 // Removes the listener.
                 myRef.removeEventListener(databaseListener);
-
             }
 
             @Override
@@ -316,5 +320,36 @@ public class DatabaseManager {
             return null;
 
         }
+    }
+
+    /**
+     * Função que retorna
+     * lista com todas as
+     * instituições no banco
+     * de dados
+     * @return ArrayList com as instituições
+     */
+    public void getListaInstituicoes(final ArrayList lista, final BaseAdapter adapt){
+        final DatabaseReference ref = this.database.getReference("Cadastros");
+//        final ArrayList<Instituicao> lista = new ArrayList<Instituicao>();
+
+        databaseListener = ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot cad : dataSnapshot.getChildren()){
+                    Cadastro cadastro = cad.getValue(Cadastro.class);
+
+                    if (cadastro.getRegisterType() == 1) lista.add(cad.getValue(Instituicao.class));
+                }
+
+                adapt.notifyDataSetChanged();
+                ref.removeEventListener(databaseListener);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
