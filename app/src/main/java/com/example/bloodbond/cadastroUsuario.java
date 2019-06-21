@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class cadastroUsuario extends Fragment {
 
@@ -31,6 +32,25 @@ public class cadastroUsuario extends Fragment {
         btnCadastroUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (email.getText().toString().length() == 0 ||
+                        senha.getText().toString().length() == 0 ||
+                        nome.getText().toString().length() == 0) {
+
+                    Toast toast = Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
+                try {
+                    Double.parseDouble(peso.getText().toString());
+                    Double.parseDouble(altura.getText().toString());
+                    Integer.parseInt(idade.getText().toString());
+                } catch (Exception e) {
+                    Toast toast = Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
 
                 int tipoSanguineo = determinaSangue(spinner.getSelectedItem().toString());
                  Pessoa pessoa = new Pessoa(email.getText().toString(), senha.getText().toString(), nome.getText().toString(), tipoSanguineo,

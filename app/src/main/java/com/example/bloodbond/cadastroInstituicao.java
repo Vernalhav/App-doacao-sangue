@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class cadastroInstituicao extends Fragment {
 
@@ -32,13 +33,20 @@ public class cadastroInstituicao extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // TODO: Criar uma instancia da classe pessoa com os dados do novo usuario.
-//                Instituicao instituicao = new Instituicao("inst@inst.com", "admin", "Instituição A", "Lugar nenhum", 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8);
+                if (email.getText().toString().length() == 0 ||
+                        senha.getText().toString().length() == 0  ||
+                        nome.getText().toString().length() == 0 ||
+                        endereco.getText().toString().length() == 0) {
 
-                instituicao = new Instituicao(email.getText().toString(), senha.getText().toString(),
-                                            nome.getText().toString(), endereco.getText().toString(),
-                                            0, 0, 0, 0, 0, 0, 0, 0);
-                cadastroEstoque();
+                    Toast toast = Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                } else {
+                    instituicao = new Instituicao(email.getText().toString(), senha.getText().toString(),
+                                                nome.getText().toString(), endereco.getText().toString(),
+                                                0, 0, 0, 0, 0, 0, 0, 0);
+                    cadastroEstoque();
+                }
             }
         });
 

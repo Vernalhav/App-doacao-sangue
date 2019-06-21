@@ -53,6 +53,15 @@ public class Agendar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                try {
+                    Double.parseDouble(quantidade.getText().toString());
+                }
+                catch (Exception e) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Preencha todos os campos", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
                 doacao = new Doacao(
                         Double.parseDouble(quantidade.getText().toString()),
                         On, doador.getEmail(), emailDestino.getText().toString(),

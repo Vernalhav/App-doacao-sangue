@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class EstoqueCadastroInstituicao extends AppCompatActivity {
 
@@ -40,6 +41,17 @@ public class EstoqueCadastroInstituicao extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    Double.parseDouble(qtAp.getText().toString()); Double.parseDouble(qtAn.getText().toString());
+                    Double.parseDouble(qtBp.getText().toString()); Double.parseDouble(qtBn.getText().toString());
+                    Double.parseDouble(qtABp.getText().toString()); Double.parseDouble(qtABn.getText().toString());
+                    Double.parseDouble(qtOp.getText().toString()); Double.parseDouble(qtOn.getText().toString());
+                }
+                catch (Exception e) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Preencha todos os campos", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 atualizaEstoque();
                 cadastraInstituicao();
             }
