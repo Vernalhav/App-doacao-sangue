@@ -72,10 +72,7 @@ public class cadastroUsuario extends Fragment {
         String text = parent.getItemAtPosition(position).toString();
     }
 
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
+    /*Função que retorna o valor númerico de cada tipo sanguíneo*/
     public int determinaSangue(String s){
         String[] tipos = new String[] {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
         for (int i = 0; i < 8; i++){

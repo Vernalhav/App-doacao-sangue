@@ -48,5 +48,4 @@ public class perfilUsuario extends Fragment {
         intent.putExtra("usuario", pes);
         startActivity(intent);
     }
-    //TODO setar os textview com os dados dos usuarios
 }

@@ -52,20 +52,6 @@ public class Pessoa extends Cadastro implements Serializable {
         this.altura = altura;
         this.doacoesAgendadas = new ArrayList<>();
 
-        /**
-        Doacao d1 = new Doacao(100,0,"a","insta", new Date(100000));
-        Doacao d2 = new Doacao(150,0,"a","instb", new Date(200000));
-        Doacao d3 = new Doacao(200,2,"b","instc", new Date(700000));
-        Doacao d4 = new Doacao(350,3,"d","instd", new Date(300000));
-        Doacao d5 = new Doacao(50,4,"c","inste", new Date(400000));
-
-        doacoesAgendadas.add(d1);
-        doacoesAgendadas.add(d2);
-        doacoesAgendadas.add(d3);
-        doacoesAgendadas.add(d4);
-        doacoesAgendadas.add(d5);
-        */
-
         this.doacoesPrevias = new ArrayList<>();
 
     }
@@ -139,7 +125,6 @@ public class Pessoa extends Cadastro implements Serializable {
     public void AddPreviousDonation(Doacao doacao) {
 
         doacoesPrevias.add(doacao);
-        // TODO: update on database.
 
     }
 
